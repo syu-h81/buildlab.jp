@@ -1,0 +1,86 @@
+---
+import footerLogo from '../assets/images/logo.png';
+
+const navItems = ['About', 'Service', 'Works', 'Price', 'Flow'];
+const socials = [
+	{
+		label: 'Instagram',
+		href: 'https://www.instagram.com/',
+		icon: 'instagram',
+	},
+	{
+		label: 'Facebook',
+		href: 'https://www.facebook.com/',
+		icon: 'facebook',
+	},
+];
+---
+
+<footer class="relative overflow-hidden bg-[#000000] px-6 py-14 text-white sm:px-10 lg:px-16 lg:py-20">
+	<div class="relative mx-auto grid max-w-[1600px] gap-12 lg:grid-cols-[1.4fr_1fr_0.8fr] lg:items-start">
+		<div class="space-y-10 text-[17px] leading-8 text-white/90 sm:text-[19px]">
+			<div>
+				<p class="font-semibold">Email:</p>
+				<a class="transition hover:text-[#168bff]" href="mailto:info@buildlab.jp">info@buildlab.jp</a>
+			</div>
+			<div>
+				<p class="font-semibold">Address:</p>
+				<p>〒722-2324</p>
+				<p>広島県尾道市</p>
+			</div>
+		</div>
+
+		<nav aria-label="Footer navigation">
+			<ul class="grid grid-cols-2 gap-x-14 gap-y-4 text-[18px] font-bold leading-7 lg:gap-x-20">
+				{navItems.map((item) => (
+					<li>
+						<a class="transition hover:text-[#168bff]" href={`#${item.toLowerCase()}`}>
+							{item}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<div>
+			<p class="mb-4 text-[17px] leading-8 text-white/90 sm:text-[19px]">Follow us</p>
+			<ul class="flex gap-3">
+				{socials.map((social) => (
+					<li>
+						<a
+							href={social.href}
+							aria-label={social.label}
+							class="flex h-14 w-14 items-center justify-center rounded-md bg-white/25 text-white transition duration-300 hover:bg-white hover:text-black"
+							target="_blank"
+							rel="noreferrer"
+						>
+							{social.icon === 'instagram' ? (
+								<svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+									<rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="2"></rect>
+									<circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"></circle>
+									<circle cx="17" cy="7" r="1.2" fill="currentColor"></circle>
+								</svg>
+							) : (
+								<svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+									<path d="M14.2 8.4V6.9c0-.7.5-.9.9-.9H17V3h-2.6c-2.9 0-3.6 2.1-3.6 3.5v1.9H8.5v3.2h2.3V21h3.4v-9.4h2.5l.4-3.2h-2.9Z"></path>
+								</svg>
+							)}
+						</a>
+					</li>
+				))}
+			</ul>
+		</div>
+	</div>
+
+	<div class="relative mt-14 lg:mt-20 items-center md:flex md:justify-between">
+    <p class="relative max-w-[1600px] text-sm font-semibold text-white/75 sm:text-base">
+      © BuildLab. All Rights Reserved
+    </p>
+		<img
+			src={footerLogo.src}
+			alt="BuildLab"
+			class="max-w-[320px] md:max-w-[580px]"
+			loading="lazy"
+		/>
+	</div>
+</footer>
