@@ -4,7 +4,7 @@ import headerLogo from '../assets/images/header-logo.png';
 const navItems = ['About', 'Service', 'Works', 'Price', 'Flow'];
 ---
 
-<header class="w-full bg-[#000000] px-5 py-5 text-white sm:px-8 lg:px-12">
+<header data-site-header class="site-header fixed left-0 top-0 z-50 w-full px-5 py-5 text-white sm:px-8 lg:px-12">
 	<div class="mx-auto flex max-w-[1920px] items-center justify-between gap-8">
 		<a href="/" class="block shrink-0" aria-label="BuildLab home">
 			<img
@@ -42,3 +42,37 @@ const navItems = ['About', 'Service', 'Works', 'Price', 'Flow'];
 		</div>
 	</div>
 </header>
+
+<script>
+	const header = document.querySelector<HTMLElement>('[data-site-header]');
+	const hero = document.querySelector<HTMLElement>('[data-hero-section]');
+
+	const updateHeader = () => {
+		if (!header || !hero) return;
+
+		const heroBottom = hero.offsetTop + hero.offsetHeight;
+		const triggerPoint = heroBottom - header.offsetHeight;
+
+		header.classList.toggle('is-scrolled', window.scrollY >= triggerPoint);
+	};
+
+	updateHeader();
+	window.addEventListener('scroll', updateHeader, { passive: true });
+	window.addEventListener('resize', updateHeader);
+</script>
+
+<style>
+	.site-header {
+		background-color: transparent;
+		transition:
+			background-color 0.35s ease,
+			box-shadow 0.35s ease,
+			backdrop-filter 0.35s ease;
+	}
+
+	.site-header.is-scrolled {
+		background-color: #000000;
+		box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
+		opacity: 0.9;
+	}
+</style>
