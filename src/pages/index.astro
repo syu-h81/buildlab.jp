@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import heroImage01 from '../assets/images/hero-image-01.webp';
@@ -163,10 +164,9 @@ const plans = [
 		<section id="about" class="relative overflow-hidden bg-[#fbfcfe] px-6 py-24 text-center text-[#253044] sm:px-10 sm:py-32 lg:px-16 lg:py-40">
 			<div class="pointer-events-none absolute left-[8%] top-28 h-44 w-44 rounded-full bg-[#eaf3ff]/70 blur-3xl"></div>
 			<div class="mx-auto max-w-[1480px]">
-				<p class="text-sm font-black uppercase tracking-[0.24em] text-[#9aa4b2]">About</p>
-				<h2 class="mt-6 text-[clamp(2.1rem,4.8vw,4rem)] font-black leading-tight tracking-normal text-[#1f2a3d]">
+				<SectionTitle variant="about" eyebrow="About">
 					地域に寄り添い、未来を築く。
-				</h2>
+				</SectionTitle>
 
 				<div class="mx-auto mt-20 max-w-5xl rounded-[28px] border border-[#eef2f7] bg-white px-6 py-12 shadow-[0_22px_48px_rgb(15_23_42_/_0.14)] sm:px-12 sm:py-14 lg:px-20">
 					<div class="space-y-8 text-base font-bold leading-[2] tracking-[0.03em] text-[#6b7280] sm:text-lg">
@@ -233,7 +233,7 @@ const plans = [
 						地域企業の未来をデザインと技術で支える制作スタジオです。
 					</p>
 					<a
-						href="#service"
+						href="/about"
 						class="mt-10 inline-flex min-h-14 min-w-52 items-center justify-center rounded-lg bg-white px-8 text-base font-black text-[#253044] transition duration-300 hover:bg-[#3b82f6] hover:text-white"
 					>
 						私たちについて
@@ -244,12 +244,11 @@ const plans = [
 
 		<section id="service" class="relative rounded-t-[28px] bg-white px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
 			<div class="mx-auto max-w-[1400px]">
-				<div class="mx-auto max-w-4xl text-center">
-					<p class="text-sm font-bold uppercase tracking-[0.24em] text-[#42a98c]">Services</p>
-					<h2 class="mt-6 text-4xl font-black leading-[0.95] sm:text-6xl lg:text-7xl">
+				<SectionTitle variant="services" eyebrow="Services">
 						We design websites<br />
 						<span class="text-[#1c806f]">that move business.</span>
-					</h2>
+				</SectionTitle>
+				<div class="mx-auto max-w-4xl text-center">
 					<p class="mx-auto mt-8 max-w-2xl leading-8 text-[#58717b]">
 						戦略からデザイン、実装、公開後の改善まで。目的に合わせた一貫したWeb制作をご提供します。
 					</p>
@@ -281,13 +280,10 @@ const plans = [
 		<section id="works" class="relative overflow-hidden bg-white px-6 py-24 text-[#111111] sm:px-10 sm:py-32 lg:px-16 lg:py-40">
 			<div class="pointer-events-none absolute inset-x-0 top-[35%] mx-auto h-[520px] max-w-[1100px] bg-[linear-gradient(120deg,transparent_18%,#eef8fb_18%,#eef8fb_28%,transparent_28%,transparent_43%,#eef8fb_43%,#eef8fb_55%,transparent_55%)] opacity-55"></div>
 			<div class="relative mx-auto max-w-[1500px]">
-				<div class="text-center">
-					<h2 class="text-[clamp(4rem,8vw,7.5rem)] font-normal leading-none tracking-normal text-[#102231]">
+				<SectionTitle variant="works" subtitle="Webサイト制作実績">
 						Works
-					</h2>
-					<p class="mt-8 text-xl font-black tracking-[0.08em] text-[#111111]">
-						Webサイト制作実績
-					</p>
+				</SectionTitle>
+				<div class="text-center">
 					<p class="mx-auto mt-24 max-w-3xl text-xl font-black leading-[2] tracking-[0.08em] text-[#111111]">
 						BuildLabでは、オリジナリティの高いデザインだけでなく、<br class="hidden sm:block" />
 						競合他社を踏まえたコンセプト設計やSEO対策も考慮した、<br class="hidden sm:block" />
@@ -320,10 +316,9 @@ const plans = [
 		<section id="price" class="bg-[#0d6668] px-6 py-24 text-white sm:px-10 sm:py-32 lg:px-16">
 			<div class="mx-auto max-w-[1400px]">
 				<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-					<div>
-						<p class="text-sm font-bold uppercase tracking-[0.24em] text-[#b9eadb]">Price</p>
-						<h2 class="mt-5 text-5xl font-black sm:text-7xl">Simple plans,<br />clear value.</h2>
-					</div>
+					<SectionTitle variant="price" eyebrow="Price">
+						Simple plans,<br />clear value.
+					</SectionTitle>
 					<p class="max-w-xl text-lg leading-8 text-white/75">
 						サイトの目的や規模に合わせて選べる基本プランです。内容を伺ったうえで、最適な進め方とお見積もりをご提案します。
 					</p>
@@ -344,15 +339,12 @@ const plans = [
 
 		<section id="contact" class="relative rounded-t-[28px] bg-white px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
 			<div class="mx-auto max-w-[1500px]">
-				<p class="text-sm font-bold uppercase tracking-[0.24em] text-[#42a98c]">Contact</p>
-				<div class="mt-8 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-					<h2 class="text-[clamp(4rem,10vw,10rem)] font-black leading-[0.8]">
-						Get <span class="text-[#1c806f]">in touch.</span>
-					</h2>
-					<a href="mailto:info@buildlab.jp" class="inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#ff922d] text-3xl text-white transition duration-300 hover:rotate-45 hover:bg-[#168bff] sm:h-28 sm:w-28">
+				<SectionTitle variant="contact" eyebrow="Contact">
+					Get <span class="text-[#1c806f]">in touch.</span>
+					<a slot="action" href="mailto:info@buildlab.jp" class="inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#ff922d] text-3xl text-white transition duration-300 hover:rotate-45 hover:bg-[#168bff] sm:h-28 sm:w-28">
 						→
 					</a>
-				</div>
+				</SectionTitle>
 				<div class="mt-16 grid gap-5 border-t border-[#cbd9d6] pt-8 sm:grid-cols-2 sm:items-end">
 					<p class="max-w-xl text-lg leading-8 text-[#58717b]">
 						新規制作、リニューアル、運用のご相談など、まだ要件が固まっていない段階でもお気軽にお問い合わせください。
