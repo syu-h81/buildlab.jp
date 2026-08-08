@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CTA from '../components/CTA.astro';
+import localImage from '../assets/images/hero-image-02.webp';
+
+const values = [
+	{
+		title: '事業を深く知る',
+		text: '会社の歴史や大切にしていること、お客様の声まで丁寧に伺い、本当に伝えるべき価値を見つけます。',
+	},
+	{
+		title: '伝わる形にする',
+		text: '情報を整理し、言葉とデザイン、使いやすい導線へ。企業らしさがまっすぐ届くWebサイトを設計します。',
+	},
+	{
+		title: '使いやすさを磨く',
+		text: '見る人が迷わず目的の情報へたどり着けること。心地よく使える体験を、細部まで丁寧に整えます。',
+	},
+	{
+		title: '公開後も育てる',
+		text: 'Webサイトは公開がスタートです。更新や改善を重ねながら、事業と一緒に育つ仕組みをつくります。',
+	},
+];
+
+const approach = [
+	{
+		number: '01',
+		title: '目的から考える',
+		text: '見た目をつくる前に、誰に何を届け、どんな行動につなげたいのかを明確にします。',
+	},
+	{
+		number: '02',
+		title: '迷わない体験をつくる',
+		text: 'スマートフォンでも快適に使え、必要な情報へ自然にたどり着ける構成を設計します。',
+	},
+	{
+		number: '03',
+		title: '長く使える基盤をつくる',
+		text: '表示速度やSEO、更新のしやすさにも配慮し、継続して活用できるサイトに仕上げます。',
+	},
+];
+
+const profile = [
+	{ label: '屋号', value: 'BuildLab' },
+	{ label: '代表者', value: '檀上 珠宇' },
+	{ label: '所在地', value: '広島県尾道市' },
+	{ label: '事業内容', value: 'Webサイトの企画・設計・デザイン・開発・運用支援' },
+	{ label: 'メールアドレス', value: 'info@buildlab.jp', href: 'mailto:info@buildlab.jp' },
+];
+---
+
+<Layout
+	title="About｜BuildLab"
+	description="BuildLabは、広島・尾道を拠点に、地域企業の価値を見つけ、伝わるWebサイトへ育てる制作スタジオです。"
+>
+	<Header theme="light" />
+
+	<main class="overflow-hidden bg-white text-[#102231]">
+		<section data-hero-section class="relative flex items-center overflow-hidden bg-[#fafafa] px-6 py-16 sm:min-h-[540px] sm:px-10 lg:px-16">
+			<svg
+				aria-hidden="true"
+				class="pointer-events-none absolute inset-0 h-full w-full opacity-55 sm:opacity-80"
+				viewBox="0 0 2048 610"
+				preserveAspectRatio="none"
+			>
+				<path d="M980 610C1200 519 1263 405 1435 342C1650 263 1796 165 1974 0H2048V610H980Z" fill="#eef3f1"></path>
+				<path d="M1210 610C1372 531 1486 446 1620 384C1810 296 1924 205 2048 104V610H1210Z" fill="#dce8e5" fill-opacity="0.72"></path>
+				<path d="M1508 610C1674 535 1803 459 1911 392C1969 356 2014 322 2048 294V610H1508Z" fill="#c4d9d6" fill-opacity="0.78"></path>
+				<path d="M1840 610C1920 574 1990 532 2048 489V610H1840Z" fill="#a9c8c5" fill-opacity="0.58"></path>
+			</svg>
+
+			<div class="relative z-10 mx-auto w-full max-w-6xl">
+				<SectionTitle
+					variant="page"
+					as="h1"
+					eyebrow="About"
+					subtitle={'地域の中にある、まだ言葉になっていない魅力を見つける。\n私たちは、デザインと技術でその価値を未来へつなぎます。'}
+				>
+					We are BuildLab.
+					<p slot="lede" class="mt-4 text-[clamp(1.25rem,2.2vw,1.9rem)] font-bold leading-relaxed tracking-[0.1em] text-[#202526]">
+						地域のそばで、未来をつくる。
+					</p>
+				</SectionTitle>
+			</div>
+		</section>
+
+		<section class="relative px-6 py-16 sm:px-10 lg:px-16">
+			<div class="pointer-events-none absolute left-[-8rem] top-32 h-80 w-80 rounded-full bg-[#e9f4ff] blur-3xl"></div>
+			<div class="relative mx-auto w-full max-w-6xl">
+				<SectionTitle variant="contentCentered" eyebrow="Our belief">
+					地域の魅力を、<br /><span class="text-[#168bff]">未来の力に。</span>
+				</SectionTitle>
+
+				<div class="mt-20 grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
+					<figure class="relative">
+						<img
+							src={localImage.src}
+							alt="瀬戸内の島々を結ぶ橋と海"
+							width={1537}
+							height={1023}
+							class="relative aspect-[4/3] w-full rounded-[30px] object-cover shadow-[0_24px_60px_rgb(15_35_48_/_0.18)]"
+							loading="lazy"
+						/>
+					</figure>
+
+					<div class="lg:pl-4">
+						<p class="text-2xl font-black leading-[1.8] text-[#102231] sm:text-3xl">
+							地域に根ざした企業には、<br />そこでしか生まれない価値があります。
+						</p>
+						<div class="mt-9 space-y-6 text-base font-bold leading-[2] text-[#6f7f89] sm:text-lg">
+							<p>
+								積み重ねてきた信頼、受け継がれてきた技術、働く人の想い。けれど、その魅力が十分に伝わっていないことも少なくありません。
+							</p>
+							<p>
+								BuildLabは、企業の内側にある価値を丁寧に見つけ、言葉とデザイン、技術で伝わる形にします。つくって終わりではなく、事業の変化に寄り添いながら、ともに育てていく。それが私たちの考えるWeb制作です。
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-white px-6 py-16 sm:px-10 lg:px-16">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="max-w-2xl">
+					<SectionTitle variant="message" eyebrow="Message from CEO">
+						代表　檀上 珠宇
+					</SectionTitle>
+
+					<div class="mt-14 space-y-7 text-sm font-medium leading-[2] tracking-[0.035em] text-[#687174] sm:text-base sm:leading-[2.15]">
+						<p class="text-base font-bold leading-[2] text-[#4d595c] sm:text-lg">
+							地域に根ざす企業の魅力を、もっと遠くへ、もっと確かに届けたい。
+						</p>
+						<p>
+							地域で長く事業を続けている企業には、積み重ねてきた信頼や技術、働く人の想いがあります。一方で、その価値が言葉や形にならないまま、必要としている人へ届いていないことも少なくありません。
+						</p>
+						<p>
+							BuildLabは、そうした企業の内側にある魅力を丁寧に見つけ、伝わるWebサイトへ変えていくために活動しています。見た目を整えるだけでなく、事業の背景やこれからの目標まで理解し、言葉、デザイン、技術を一つにつなげます。
+						</p>
+						<p>
+							Webサイトは、公開して終わるものではありません。事業とともに更新し、改善を重ねることで、地域とお客様を結ぶ大切な資産へ育っていきます。その歩みに長く寄り添える存在でありたいと考えています。
+						</p>
+						<p>
+							地域のそばで、未来をつくる。目の前の一社と誠実に向き合い、その先にいる人へ価値を届けることが、私たちの使命です。
+						</p>
+					</div>
+
+					<div class="mt-14 border-l-2 border-[#9ab8b5] py-1 pl-6 sm:pl-8">
+						<p class="text-2xl font-black tracking-[0.08em] text-[#202526] sm:text-3xl">檀上 珠宇</p>
+						<p class="mt-3 text-sm font-medium text-[#687174] sm:text-base">代表</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-[#f7f8f7] px-6 py-16 sm:px-10 lg:px-16">
+			<div class="mx-auto w-full max-w-6xl">
+				<SectionTitle variant="values" eyebrow="Our Values">
+					譲れない、4つの姿勢。
+				</SectionTitle>
+
+				<div class="mt-14 grid gap-6 md:grid-cols-2 md:gap-7">
+					{values.map((value) => (
+						<article class="flex min-h-[220px] flex-col justify-center rounded-[16px] border border-[#ccd5d5] bg-white p-8 shadow-[0_10px_22px_rgb(44_62_62_/_0.08)] transition duration-300 hover:shadow-[0_14px_30px_rgb(44_62_62_/_0.12)] sm:p-10 lg:min-h-[240px] lg:p-11">
+							<h3 class="text-xl font-black leading-snug tracking-[0.02em] text-[#202526] sm:text-2xl">{value.title}</h3>
+							<p class="mt-6 max-w-2xl text-sm font-medium leading-8 tracking-[0.025em] text-[#687174] sm:text-base">{value.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-[#fafafa] px-6 pt-16 pb-32 sm:px-10 lg:px-16">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="border-l-2 border-main py-1 pl-7 sm:pl-8">
+					<SectionTitle variant="approach" eyebrow="Our approach">
+						成果につながるまで、考え抜く。
+					</SectionTitle>
+					<p class="mt-8 max-w-2xl text-sm font-medium leading-8 tracking-[0.035em]">
+						美しいだけのWebサイトではなく、伝わり、選ばれ、事業の力になるWebサイトを目指します。
+					</p>
+				</div>
+
+				<div class="mt-16 grid gap-10 lg:grid-cols-3 lg:gap-12">
+					{approach.map((item) => (
+						<article class="border-t border-accent pt-8">
+							<p class="font-sans font-medium tracking-[0.18em] text-main">{item.number}</p>
+							<h3 class="mt-8 text-xl font-black tracking-[0.02em] text-[#202526] sm:text-2xl">{item.title}</h3>
+							<p class="mt-5 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">{item.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-16 sm:px-10 lg:px-16">
+			<div class="mx-auto w-full max-w-6xl">
+				<SectionTitle variant="contentCentered" eyebrow="Studio profile">
+					BuildLabについて
+				</SectionTitle>
+
+				<dl class="mx-auto mt-10 max-w-4xl border-t-2 border-[#102231]">
+					{profile.map((item) => (
+						<div class="grid gap-3 border-b border-[#dfe6eb] py-7 sm:grid-cols-[180px_1fr] sm:gap-8 sm:py-8">
+							<dt class="text-sm font-black uppercase">{item.label}</dt>
+							<dd class="font-bold leading-8">
+								{item.href ? <a href={item.href} class="transition hover:text-[#168bff]">{item.value}</a> : item.value}
+							</dd>
+						</div>
+					))}
+				</dl>
+			</div>
+		</section>
+
+		<CTA />
+	</main>
+
+	<Footer />
+</Layout>

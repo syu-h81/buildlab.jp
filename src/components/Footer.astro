@@ -1,7 +1,13 @@
 ---
 import footerLogo from '../assets/images/logo.png';
 
-const navItems = ['About', 'Service', 'Works', 'Price', 'Flow'];
+const navItems = [
+	{ label: 'About', href: '/about' },
+	{ label: 'Service', href: '/service' },
+	{ label: 'Works', href: '/#works' },
+	{ label: 'Price', href: '/#price' },
+	{ label: 'Flow', href: '/#flow' },
+];
 const socials = [
 	{
 		label: 'Instagram',
@@ -34,8 +40,8 @@ const socials = [
 			<ul class="grid grid-cols-2 gap-x-14 gap-y-4 text-[18px] font-bold leading-7 lg:gap-x-20">
 				{navItems.map((item) => (
 					<li>
-						<a class="transition hover:text-[#168bff]" href={`#${item.toLowerCase()}`}>
-							{item}
+						<a class="transition hover:text-[#168bff]" href={item.href}>
+							{item.label}
 						</a>
 					</li>
 				))}
