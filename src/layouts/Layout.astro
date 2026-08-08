@@ -1,5 +1,15 @@
 ---
 import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'BuildLab｜地域企業のためのWeb制作スタジオ',
+	description = '広島・尾道を拠点に、地域企業の魅力をデザインと技術で未来へ届けるWeb制作スタジオです。',
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,7 +20,8 @@ import '../styles/global.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
 	</head>
 	<body class="font-[family-name:var(--font-hiphop)]">
 		<slot />
