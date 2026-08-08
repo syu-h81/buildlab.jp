@@ -2,4 +2,7 @@
 
 @theme {
   --font-hiphop: "IREPHIPHOPJP", sans-serif;
+  /* Brand colors: base 60% / main 30% / accent 10% */
+  --color-main: #168bff;
+  --color-accent: #F5A25B;
 }
