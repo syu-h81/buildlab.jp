@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CTA from '../components/CTA.astro';
+
+const filterCategories = ['All', 'Corporate', 'Service', 'Landing Page', 'WordPress', 'EC'];
+
+const works = [
+	{
+		image: '/m-holdings.png',
+		title: 'M Holdings様｜コーポレートサイト',
+		category: 'コーポレートサイト / 企業サイト / Web制作',
+		area: '広島県 / 尾道市',
+		filter: 'Corporate',
+	},
+	{
+		image: '/AQ-RESIDENCE.png',
+		title: 'AQ RESIDENCE様｜ブランドサイト',
+		category: '住宅 / 不動産 / ブランドサイト',
+		area: '広島県 / 福山市',
+		filter: 'Corporate',
+	},
+	{
+		image: '/kokoshiro.png',
+		title: 'ここしろ様｜サービスサイト',
+		category: '福祉 / 地域サービス / Web制作',
+		area: '広島県 / 尾道市',
+		filter: 'Service',
+	},
+	{
+		image: '/hirock-lab.png',
+		title: 'HIROCK LAB様｜メディアサイト',
+		category: '研究 / 教育 / 情報発信サイト',
+		area: '広島県',
+		filter: 'WordPress',
+	},
+	{
+		image: '/smile_sumai.png',
+		title: 'スマイル住まい様｜サービスサイト',
+		category: '住宅 / リフォーム / 集客サイト',
+		area: '岡山県',
+		filter: 'Landing Page',
+	},
+	{
+		image: '/primekaji.png',
+		title: 'プライム家事様｜サービスサイト',
+		category: '暮らし / 家事代行 / サービスサイト',
+		area: '関西地方',
+		filter: 'Service',
+	},
+];
+---
+
+<Layout
+	title="Works｜BuildLab"
+	description="BuildLabが支援してきたWebサイト制作実績を紹介します。地域企業の課題解決につながる実績をご覧ください。"
+>
+	<Header theme="light" />
+
+	<main class="overflow-hidden bg-white text-[#102231]">
+		<section data-hero-section class="relative flex items-center overflow-hidden bg-[#fafafa] px-6 py-16 sm:min-h-[540px] sm:px-10 lg:px-16">
+			<svg
+				aria-hidden="true"
+				class="pointer-events-none absolute inset-0 h-full w-full opacity-55 sm:opacity-80"
+				viewBox="0 0 2048 610"
+				preserveAspectRatio="none"
+			>
+				<path d="M980 610C1200 519 1263 405 1435 342C1650 263 1796 165 1974 0H2048V610H980Z" fill="#eef3f1"></path>
+				<path d="M1210 610C1372 531 1486 446 1620 384C1810 296 1924 205 2048 104V610H1210Z" fill="#dce8e5" fill-opacity="0.72"></path>
+				<path d="M1508 610C1674 535 1803 459 1911 392C1969 356 2014 322 2048 294V610H1508Z" fill="#c4d9d6" fill-opacity="0.78"></path>
+				<path d="M1840 610C1920 574 1990 532 2048 489V610H1840Z" fill="#a9c8c5" fill-opacity="0.58"></path>
+			</svg>
+
+			<div class="relative z-10 mx-auto w-full max-w-6xl">
+				<SectionTitle
+					variant="page"
+					as="h1"
+					eyebrow="Works"
+					subtitle="Webサイトは、見た目を整えるだけではありません。\nお客様が抱える課題と向き合い、目的を整理し、\nデザインと技術によって解決へ導きます。"
+				>
+					つくったものと、<br />その先の成果。
+				</SectionTitle>
+			</div>
+		</section>
+
+    <section id="works-index">
+			<div class="pointer-events-none absolute left-[-8rem] top-48 h-80 w-80 rounded-full bg-[#e9f4ff] blur-3xl"></div>
+			<div class="relative mx-auto w-full max-w-6xl">
+				<div class="max-w-3xl">
+					<SectionTitle variant="values" eyebrow="Selected works">
+						制作実績から見る、<br />課題整理から成果まで。
+					</SectionTitle>
+					<p class="mt-7 text-sm font-medium leading-8 tracking-[0.035em] text-[#687174] sm:text-base">
+						BuildLabは、見た目の整然さだけではなく、目的を持ち運用を見据えたWebサイトづくりを支援しています。
+					</p>
+				</div>
+
+				<div class="mt-10 flex flex-wrap gap-3">
+					{filterCategories.map((category) => (
+						<button type="button" class="filter-button rounded-full border border-[#ccd5d5] px-5 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#687174] transition duration-300 hover:bg-[#172b2e] hover:text-white" data-filter-button={category} data-filter-category={category}>
+							{category}
+						</button>
+					))}
+				</div>
+
+				<div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+					{works.map((work) => (
+						<article class="work-card group overflow-hidden rounded-[18px] border border-[#ccd5d5] bg-white shadow-[0_10px_22px_rgb(44_62_62_/_0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgb(44_62_62_/_0.12)]" data-work-card data-work-category={work.filter}>
+							<div class="overflow-hidden">
+								<img src={work.image} alt="" class="h-52 w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+							</div>
+							<div class="p-7">
+								<p class="font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-[#9ab8b5]">{work.area}</p>
+								<h3 class="mt-4 text-xl font-black leading-snug tracking-[0.02em] text-[#202526]">{work.title}</h3>
+								<p class="mt-4 text-sm font-medium leading-7 tracking-[0.025em] text-[#687174]">{work.category}</p>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-[#f7f8f7] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="border-l-2 border-main py-1 pl-7 sm:pl-8">
+					<SectionTitle variant="approach" eyebrow="What changed">
+						サイトが、<br />仕事を動かすように。
+					</SectionTitle>
+				</div>
+
+				<div class="mt-14 grid gap-10 md:grid-cols-3">
+					<article class="border-t border-accent pt-8">
+						<p class="font-sans font-medium tracking-[0.18em] text-main">01</p>
+						<h3 class="mt-8 text-xl font-black tracking-[0.02em] text-[#202526] sm:text-2xl">伝わる構成</h3>
+						<p class="mt-5 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">目的と情報が整理され、訪問者が迷わず内容にたどり着けます。</p>
+					</article>
+					<article class="border-t border-accent pt-8">
+						<p class="font-sans font-medium tracking-[0.18em] text-main">02</p>
+						<h3 class="mt-8 text-xl font-black tracking-[0.02em] text-[#202526] sm:text-2xl">ブランドの強み</h3>
+						<p class="mt-5 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">企業の価値や人の想いを、ひと目で伝わる言葉と表現にまとめます。</p>
+					</article>
+					<article class="border-t border-accent pt-8">
+						<p class="font-sans font-medium tracking-[0.18em] text-main">03</p>
+						<h3 class="mt-8 text-xl font-black tracking-[0.02em] text-[#202526] sm:text-2xl">継続的な成長</h3>
+						<p class="mt-5 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">公開後の改善や更新まで見据え、サイトを成長する資産として支えます。</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="max-w-3xl">
+					<SectionTitle variant="approach" eyebrow="Behind the Works">
+						デザインの前に、<br />考えることがある。
+					</SectionTitle>
+				</div>
+
+				<div class="mt-14 grid gap-8 md:grid-cols-3">
+					<article class="rounded-[18px] border border-[#ccd5d5] bg-white p-8 shadow-[0_10px_22px_rgb(44_62_62_/_0.07)]">
+						<p class="font-sans text-sm font-medium tracking-[0.18em] text-main">01 — Discover</p>
+						<h3 class="mt-7 text-2xl font-black tracking-[0.02em] text-[#202526]">課題を見つける</h3>
+						<p class="mt-5 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">ヒアリングを通して、Webサイトで解決すべき課題を整理します。</p>
+					</article>
+					<article class="rounded-[18px] border border-[#ccd5d5] bg-white p-8 shadow-[0_10px_22px_rgb(44_62_62_/_0.07)]">
+						<p class="font-sans text-sm font-medium tracking-[0.18em] text-main">02 — Design</p>
+						<h3 class="mt-7 text-2xl font-black tracking-[0.02em] text-[#202526]">魅力を形にする</h3>
+						<p class="mt-5 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">企業やサービスが持つ魅力を、情報設計・言葉・デザインに落とし込みます。</p>
+					</article>
+					<article class="rounded-[18px] border border-[#ccd5d5] bg-white p-8 shadow-[0_10px_22px_rgb(44_62_62_/_0.07)]">
+						<p class="font-sans text-sm font-medium tracking-[0.18em] text-main">03 — Deliver</p>
+						<h3 class="mt-7 text-2xl font-black tracking-[0.02em] text-[#202526]">成果につなげる</h3>
+						<p class="mt-5 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">ユーザーが迷わず行動できる導線を設計し、目的につながるWebサイトを構築します。</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<CTA
+			eyebrow="Contact"
+			title="次の一歩を、一緒に設計しませんか。"
+			description="実績のように、あなたの事業に合ったWebサイトを一緒に考えます。"
+		/>
+	</main>
+
+	<Footer />
+</Layout>
+
+<script>
+	import '../scripts/service.ts';
+</script>
