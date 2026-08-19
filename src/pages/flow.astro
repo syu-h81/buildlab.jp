@@ -1,0 +1,364 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CTA from '../components/CTA.astro';
+
+const flowSteps = [
+	{
+		number: '01',
+		label: 'CONTACT',
+		title: 'お問い合わせ',
+		description:
+			'お問い合わせフォームより、現在のお悩みやご希望についてお気軽にご相談ください。',
+		extra: ['相談無料', 'オンライン対応可能'],
+	},
+	{
+		number: '02',
+		label: 'HEARING',
+		title: 'ヒアリング',
+		description:
+			'事業内容やWebサイトを制作する目的、現在抱えている課題などについてお話を伺います。',
+		items: [
+			'Webサイトの目的',
+			'ターゲット',
+			'現在の課題',
+			'必要なページ・機能',
+			'デザインイメージ',
+			'ご予算',
+			'希望公開時期',
+		],
+	},
+	{
+		number: '03',
+		label: 'PROPOSAL',
+		title: 'ご提案・お見積もり',
+		description:
+			'ヒアリング内容をもとに、サイト構成・制作内容・スケジュール・お見積もりをご提案します。',
+		note: '内容をご確認・ご納得いただいたうえで、契約・制作開始へ進みます。',
+	},
+	{
+		number: '04',
+		label: 'PLANNING',
+		title: '企画・情報設計',
+		description:
+			'Webサイトの目的やターゲットをもとに、必要な情報とユーザー導線を整理します。',
+		items: ['サイトマップ', 'ページ構成', 'コンテンツ整理', 'ワイヤーフレーム'],
+		note: '見た目を作る前に、サイトの目的や情報設計をしっかり考えます。',
+	},
+	{
+		number: '05',
+		label: 'DESIGN',
+		title: 'デザイン',
+		description:
+			'情報設計をもとに、企業やサービスの魅力が伝わるデザインへ落とし込みます。',
+		items: ['Color', 'Typography', 'Photography', 'UI Design'],
+		note: 'デザインをご確認いただき、必要に応じて調整を行ってから次の工程へ進みます。',
+	},
+	{
+		number: '06',
+		label: 'DEVELOPMENT',
+		title: 'コーディング・CMS構築',
+		description:
+			'完成したデザインをもとに、PC・スマートフォンに対応したWebサイトを構築します。',
+		items: ['Responsive', 'Animation', 'WordPress / CMS', 'SEO', 'Performance'],
+		note: '技術そのものより、「何を実現できるのか」を伝える設計を大切にします。',
+	},
+	{
+		number: '07',
+		label: 'LAUNCH',
+		title: '確認・公開',
+		description:
+			'表示や動作、各種設定などを確認したうえでWebサイトを公開します。',
+		items: [
+			'PC・スマートフォンでの表示確認',
+			'フォーム動作確認',
+			'SEO基本設定',
+			'アクセス解析設定',
+		],
+	},
+	{
+		number: '08',
+		label: 'SUPPORT',
+		title: '運用・改善',
+		description:
+			'Webサイトは公開して終わりではありません。更新や改善、アクセス状況などを確認しながら、公開後のWeb運用もサポートします。',
+		note: '必要に応じて、Serviceページや運用支援のご案内もご提案します。',
+	},
+];
+
+const schedule = [
+	{
+		title: 'LP',
+		period: '3〜5週間',
+	},
+	{
+		title: '小規模Webサイト',
+		period: '1〜2ヶ月',
+	},
+	{
+		title: 'コーポレートサイト',
+		period: '2〜3ヶ月',
+	},
+	{
+		title: 'CMSを含むサイト',
+		period: '2〜4ヶ月',
+	},
+];
+
+const startItems = [
+	{ number: '01', label: 'TEXT', title: '原稿・掲載したい文章' },
+	{ number: '02', label: 'PHOTO', title: '写真・画像・ロゴデータ' },
+	{ number: '03', label: 'INFORMATION', title: '会社情報・サービス情報' },
+	{ number: '04', label: 'REFERENCE', title: '参考にしたいWebサイト' },
+];
+
+const faqs = [
+	{
+		question: '相談だけでも大丈夫ですか？',
+		answer:
+			'はい、まずはお気軽にご相談ください。現状の課題や目指していることを聞かせていただければ、必要に応じて進め方をご案内します。',
+	},
+	{
+		question: 'Webサイトについて詳しくなくても大丈夫ですか？',
+		answer:
+			'大丈夫です。専門知識がなくても、目的や課題を整理しながら一緒に進めます。分かりやすくご説明しながら、必要な情報を整えていきます。',
+	},
+	{
+		question: '原稿や写真がまだありません。',
+		answer:
+			'そのままでも問題ありません。ヒアリング時に、必要な原稿や素材の準備方法についてご案内しながら進めていきます。',
+	},
+	{
+		question: '制作途中で内容を変更できますか？',
+		answer:
+			'はい、制作の進行途中での調整にも対応します。ただし、方向性が大きく変わる場合は、追加の工数やスケジュールの見直しが必要になる場合があります。',
+	},
+	{
+		question: '制作期間はどのくらいですか？',
+		answer:
+			'サイトの規模やページ数、原稿や写真の準備状況によって異なります。一般的にはLPで3〜5週間、小規模サイトで1〜2ヶ月ほどを目安に進めています。',
+	},
+	{
+		question: '公開後も相談できますか？',
+		answer:
+			'もちろんです。公開後の更新や改善、アクセス分析に基づく改善提案まで、継続的にサポートしています。',
+	},
+];
+---
+
+<Layout
+	title="Flow｜BuildLab"
+	description="Web制作の流れを、問い合わせから公開後の運用まで丁寧に説明するBuildLabのFlowページです。"
+>
+	<Header theme="light" />
+
+	<main class="overflow-hidden bg-white text-[#102231]">
+		<section data-hero-section class="relative flex items-center overflow-hidden bg-[#fafafa] px-6 py-16 sm:min-h-[540px] sm:px-10 lg:px-16">
+			<svg
+				aria-hidden="true"
+				class="pointer-events-none absolute inset-0 h-full w-full opacity-55 sm:opacity-80"
+				viewBox="0 0 2048 610"
+				preserveAspectRatio="none"
+			>
+				<path d="M980 610C1200 519 1263 405 1435 342C1650 263 1796 165 1974 0H2048V610H980Z" fill="#eef3f1"></path>
+				<path d="M1210 610C1372 531 1486 446 1620 384C1810 296 1924 205 2048 104V610H1210Z" fill="#dce8e5" fill-opacity="0.72"></path>
+				<path d="M1508 610C1674 535 1803 459 1911 392C1969 356 2014 322 2048 294V610H1508Z" fill="#c4d9d6" fill-opacity="0.78"></path>
+				<path d="M1840 610C1920 574 1990 532 2048 489V610H1840Z" fill="#a9c8c5" fill-opacity="0.58"></path>
+			</svg>
+
+			<div class="relative z-10 mx-auto w-full max-w-6xl">
+				<SectionTitle
+					variant="page"
+					as="h1"
+					eyebrow="Flow"
+					subtitle={'はじめてのWeb制作でも、ご安心ください。\nBuildLabでは、目的や課題を整理するところから、\n公開後の運用まで一つひとつ丁寧に進めていきます。'}
+				>
+					一緒に考え、一つずつ形に。
+				</SectionTitle>
+			</div>
+		</section>
+
+		<section class="relative px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+			<div class="pointer-events-none absolute left-[-8rem] top-32 h-80 w-80 rounded-full bg-[#e9f4ff] blur-3xl"></div>
+			<div class="relative mx-auto w-full max-w-6xl">
+				<div class="border-l-2 border-main py-1 pl-7 sm:pl-8">
+					<SectionTitle variant="approach" eyebrow="Our Process">
+						つくる前に、まず知ることから。
+					</SectionTitle>
+				</div>
+
+				<div class="mt-12 max-w-3xl space-y-5 text-sm font-medium leading-8 tracking-[0.035em] text-[#687174] sm:text-base">
+					<p>
+						私たちは、いきなりデザインを始めることはありません。事業について、お客様について、そしてWebサイトで実現したいことについてお話を伺います。
+					</p>
+					<p>
+						そこから課題を整理し、必要なものを一緒に考えながら制作を進めていきます。
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="flow" class="bg-[#f7f8f7] px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+			<div class="mx-auto w-full max-w-6xl">
+				<SectionTitle variant="contentCentered" eyebrow="Flow">
+					制作の流れ
+				</SectionTitle>
+
+				<div class="relative mt-16">
+					<div class="absolute left-4 top-0 hidden h-full w-px bg-[#d3dfde] md:left-1/2 md:-translate-x-1/2"></div>
+						<ol class="grid gap-8 md:grid-cols-2">
+						{flowSteps.map((step) => (
+								<li class="relative flex">
+								<div class="relative flex w-full flex-col rounded-[24px] border border-[#d8e1e1] bg-white p-7 shadow-[0_10px_22px_rgb(44_62_62_/_0.06)] sm:p-8 lg:p-10">
+									<div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+										<div class="flex items-start gap-4 sm:gap-5">
+											<span class="font-sans text-sm font-medium tracking-[0.18em] text-main sm:text-base">{step.number}</span>
+											<div>
+												<p class="font-sans text-[10px] font-medium uppercase tracking-[0.22em] text-[#78918d] sm:text-xs">{step.label}</p>
+												<h3 class="mt-3 text-xl font-black tracking-[0.02em] text-[#202526]">{step.title}</h3>
+											</div>
+										</div>
+										{step.extra && (
+											<div class="flex flex-wrap gap-2 sm:justify-end">
+												{step.extra.map((item) => (
+													<span class="inline-flex items-center rounded-full border border-[#dce7e4] bg-[#f4f8f7] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#4d595c] sm:text-[11px]">
+														{item}
+													</span>
+												))}
+											</div>
+										)}
+									</div>
+
+									<p class="mt-7 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">{step.description}</p>
+
+									{step.items && (
+										<ul class="mt-6 grid gap-2 sm:grid-cols-2">
+											{step.items.map((item) => (
+												<li class="flex items-center gap-3 rounded-[12px] border border-[#edf1f0] bg-[#fafcfc] px-4 py-3 text-sm font-medium leading-7 text-[#4d595c]">
+													<span class="mt-0.5 inline-block h-1.5 w-1.5 rounded-full bg-main"></span>
+													<span>{item}</span>
+												</li>
+											))}
+										</ul>
+									)}
+
+									{step.note && (
+										<p class="mt-7 border-t border-[#e3eaeb] pt-5 text-sm font-bold leading-7 tracking-[0.025em] text-[#1d2d32]">
+											{step.note}
+										</p>
+									)}
+								</div>
+							</li>
+						))}
+					</ol>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+			<div class="mx-auto w-full max-w-6xl">
+				<SectionTitle variant="values" eyebrow="Schedule">
+					公開までの、<br />おおよその期間。
+				</SectionTitle>
+
+				<div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+					{schedule.map((item) => (
+						<article class="flex min-h-[180px] flex-col justify-between rounded-[20px] border border-[#dfe7e6] bg-[#fafcfc] p-7 shadow-[0_10px_20px_rgb(44_62_62_/_0.04)]">
+							<p class="font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-[#9ab8b5]">{item.title}</p>
+							<h3 class="mt-8 text-3xl font-black tracking-[-0.03em] text-[#102231]">{item.period}</h3>
+						</article>
+					))}
+				</div>
+
+				<p class="mt-10 max-w-2xl text-sm font-medium leading-8 tracking-[0.035em] text-[#687174] sm:text-base">
+					ページ数・機能・原稿や写真素材の準備状況などによって制作期間は異なります。
+				</p>
+			</div>
+		</section>
+
+		<section class="bg-[#edf3f1] px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+			<div class="mx-auto w-full max-w-6xl">
+				<SectionTitle variant="values" eyebrow="Before Starting">
+					ご用意いただけると、<br />制作がスムーズです。
+				</SectionTitle>
+
+				<div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+					{startItems.map((item) => (
+						<article class="rounded-[18px] border border-[#d7e4e0] bg-white p-7 shadow-[0_10px_22px_rgb(44_62_62_/_0.05)]">
+							<p class="font-sans text-xs font-medium uppercase tracking-[0.16em] text-[#9ab8b5]">{item.number}</p>
+							<h3 class="mt-6 text-xl font-black tracking-[0.02em] text-[#202526]">{item.label}</h3>
+							<p class="mt-4 text-sm font-medium leading-7 tracking-[0.025em] text-[#687174] sm:text-base">{item.title}</p>
+						</article>
+					))}
+				</div>
+
+				<p class="mt-10 max-w-3xl text-sm font-medium leading-8 tracking-[0.035em] text-[#4d595c] sm:text-base">
+					すべて揃っていなくても問題ありません。必要なものについてはヒアリング時にご案内します。
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+			<div class="mx-auto w-full max-w-5xl">
+				<SectionTitle variant="contentCentered" eyebrow="FAQ">
+					制作の流れに関するよくある質問
+				</SectionTitle>
+
+				<div class="mt-14 border-t-2 border-[#102231]">
+					{faqs.map((faq) => (
+						<details class="faq-item group border-b border-[#d8e1e1]">
+							<summary class="flex cursor-pointer list-none items-start gap-4 py-7 pr-2 sm:gap-7 sm:py-8">
+								<span class="font-sans text-lg font-medium italic text-main">Q.</span>
+								<span class="flex-1 pt-0.5 text-sm font-black leading-7 tracking-[0.02em] text-[#202526] sm:text-base">{faq.question}</span>
+								<span aria-hidden="true" class="faq-icon relative mt-1 h-5 w-5 shrink-0"></span>
+							</summary>
+							<div class="grid grid-cols-[2.25rem_1fr] gap-4 pb-8 sm:grid-cols-[3rem_1fr] sm:gap-7 sm:pb-9">
+								<span class="font-sans text-lg font-medium italic text-[#9ab8b5]">A.</span>
+								<p class="text-sm font-medium leading-8 tracking-[0.025em] text-[#687174] sm:text-base">{faq.answer}</p>
+							</div>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<CTA
+			eyebrow="Start a project."
+			title="まずは、話すところからはじめませんか。"
+			description="まだ具体的な内容が決まっていなくても大丈夫です。現在のお悩みや、実現したいことについてお聞かせください。"
+			href="/contact"
+			label="制作について相談する"
+		/>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.faq-item summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-icon::before,
+	.faq-icon::after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 18px;
+		height: 1px;
+		content: '';
+		background: #168bff;
+		transform: translate(-50%, -50%);
+		transition: transform 0.25s ease;
+	}
+
+	.faq-icon::after {
+		transform: translate(-50%, -50%) rotate(90deg);
+	}
+
+	.faq-item[open] .faq-icon::after {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+</style>
