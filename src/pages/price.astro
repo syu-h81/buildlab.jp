@@ -1,0 +1,363 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CTA from '../components/CTA.astro';
+
+const pricePlans = [
+	{
+		number: '01',
+		category: 'Landing Page',
+		title: 'LP制作',
+		price: '¥100,000〜',
+		description: '商品・サービス・キャンペーンなどの魅力を、1ページで分かりやすく伝えるWebページを制作します。',
+		included: ['ヒアリング', '構成・情報設計', 'Webデザイン', 'コーディング', 'スマートフォン対応', 'お問い合わせフォーム', 'SEO基本設定', '公開作業'],
+	},
+	{
+		number: '02',
+		category: 'Website',
+		title: 'Webサイト制作',
+		price: '¥200,000〜',
+		description: '企業・店舗・サービスなどの魅力を伝えるWebサイトを、設計から公開まで一貫して制作します。',
+		included: ['ヒアリング', 'サイト設計', '5ページ程度〜', 'Webデザイン', 'コーディング', 'スマートフォン対応', 'お問い合わせフォーム', 'SEO基本設定', 'アクセス解析設定', '公開作業'],
+	},
+	{
+		number: '03',
+		category: 'CMS / WordPress',
+		title: 'CMS・WordPressサイト',
+		price: '¥250,000〜',
+		description: 'お知らせ・ブログ・実績などを、お客様自身で更新できるWebサイトを制作します。',
+		included: ['Webサイト制作一式', 'WordPress / CMS構築', '投稿機能', '必要に応じたカスタム投稿', '管理画面設定', '更新方法のご案内'],
+	},
+	{
+		number: '04',
+		category: 'Renewal',
+		title: 'Webサイトリニューアル',
+		price: '¥200,000〜 / 要見積もり',
+		description: '既存サイトの課題を整理し、情報設計・デザイン・使いやすさなどを見直します。',
+		included: ['現状サイト調査', '情報設計の見直し', 'デザインリニューアル', 'コーディング', 'CMS移行', 'SEO・URL変更対応', '公開・移行作業'],
+		note: '既存環境や移行内容によって作業量が変わるため、個別にお見積もりします。',
+	},
+];
+
+const options = [
+	{ name: 'ページ追加', price: '¥15,000〜 / 1ページ' },
+	{ name: 'お問い合わせフォーム追加', price: '¥20,000〜' },
+	{ name: 'WordPress / CMS導入', price: '¥50,000〜' },
+	{ name: 'アニメーション実装', price: '¥20,000〜' },
+	{ name: 'ドメイン・サーバー設定', price: '¥15,000〜' },
+	{ name: 'SEO基本設定', price: '基本料金に含む' },
+	{ name: 'アクセス解析設定', price: '基本料金に含む' },
+];
+
+const examples = [
+	{
+		number: '01',
+		title: '地域の店舗サイト',
+		items: ['5ページ', 'スマートフォン対応', 'お問い合わせフォーム', 'Google Analytics', 'SEO基本設定'],
+		period: '約1.5ヶ月',
+		price: '¥220,000',
+	},
+	{
+		number: '02',
+		title: '中小企業コーポレートサイト',
+		items: ['8ページ', 'オリジナルデザイン', 'WordPress', 'お知らせ機能', 'お問い合わせフォーム', 'SEO基本設定'],
+		period: '約2ヶ月',
+		price: '¥350,000',
+	},
+	{
+		number: '03',
+		title: 'サービスLP',
+		items: ['1ページ', '構成・情報設計', 'オリジナルデザイン', 'レスポンシブ対応', 'お問い合わせフォーム', 'アニメーション'],
+		period: '約1ヶ月',
+		price: '¥150,000',
+	},
+];
+
+const faqs = [
+	{
+		question: '見積もりは無料ですか？',
+		answer: 'はい、ご相談・お見積もりは無料です。まずは現在のお悩みやご希望をお聞かせください。',
+	},
+	{
+		question: '表示されている料金以外に費用はかかりますか？',
+		answer: 'ページや機能の追加など、基本料金に含まれない内容が必要な場合は、事前に作業内容と費用をご案内します。ご確認・ご了承なく追加費用が発生することはありません。',
+	},
+	{
+		question: '予算が決まっているのですが相談できますか？',
+		answer: 'もちろんです。ご予算とWebサイトの目的を伺い、優先順位を整理しながら、制作範囲や進め方をご提案します。',
+	},
+	{
+		question: 'サーバー・ドメイン料金は含まれていますか？',
+		answer: 'サーバーやドメインなど外部サービスの利用料金は、制作費には含まれません。ご利用状況に合わせて選定や設定をサポートし、必要な費用は事前にご案内します。',
+	},
+	{
+		question: '写真撮影や文章作成もお願いできますか？',
+		answer: '内容に応じてご相談いただけます。必要な素材や文章の範囲を確認し、対応方法と費用を個別にご案内します。',
+	},
+	{
+		question: '制作途中で追加料金が発生することはありますか？',
+		answer: '仕様やご要望の追加によって費用が変わる場合は、作業に入る前に必ずご相談し、お見積もりをご提示します。内容にご了承いただいてから進行します。',
+	},
+	{
+		question: '支払いのタイミングはいつですか？',
+		answer: '制作開始時に制作費の50%、Webサイト公開時に残りの50%をお支払いいただくのが基本です。',
+	},
+];
+---
+
+<Layout
+	title="料金・制作費用 | BuildLab"
+	description="BuildLabのWebサイト制作料金をご紹介します。LP、コーポレートサイト、WordPress・CMS、Webサイトリニューアル、運用・保守など、ご予算や目的に合わせて最適な制作内容をご提案します。"
+>
+	<Header theme="light" />
+
+	<main class="overflow-hidden bg-white text-[#102231]">
+		<section data-hero-section class="relative flex items-center overflow-hidden bg-[#fafafa] px-6 py-16 sm:min-h-[540px] sm:px-10 lg:px-16">
+			<svg
+				aria-hidden="true"
+				class="pointer-events-none absolute inset-0 h-full w-full opacity-55 sm:opacity-80"
+				viewBox="0 0 2048 610"
+				preserveAspectRatio="none"
+			>
+				<path d="M980 610C1200 519 1263 405 1435 342C1650 263 1796 165 1974 0H2048V610H980Z" fill="#eef3f1"></path>
+				<path d="M1210 610C1372 531 1486 446 1620 384C1810 296 1924 205 2048 104V610H1210Z" fill="#dce8e5" fill-opacity="0.72"></path>
+				<path d="M1508 610C1674 535 1803 459 1911 392C1969 356 2014 322 2048 294V610H1508Z" fill="#c4d9d6" fill-opacity="0.78"></path>
+				<path d="M1840 610C1920 574 1990 532 2048 489V610H1840Z" fill="#a9c8c5" fill-opacity="0.58"></path>
+			</svg>
+
+			<div class="relative z-10 mx-auto w-full max-w-6xl">
+				<SectionTitle
+					variant="page"
+					as="h1"
+					eyebrow="Price"
+					subtitle={'Webサイトの目的や規模に合わせて、必要なものをご提案します。\nご予算やご要望を伺いながら、無理のない制作プランを一緒に考えます。'}
+				>
+					必要なものを、<br />必要なかたちで。
+				</SectionTitle>
+			</div>
+		</section>
+
+		<section class="px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="border-l-2 border-main py-1 pl-7 sm:pl-8">
+					<SectionTitle variant="approach" eyebrow="Pricing Policy">
+						分かりやすく、<br />必要なものだけ。
+					</SectionTitle>
+				</div>
+				<div class="mt-10 max-w-3xl space-y-5 text-sm font-medium leading-8 tracking-[0.035em] text-[#687174] sm:text-base">
+					<p>Webサイトは、ページ数や必要な機能、デザイン、CMSの有無などによって制作内容が異なります。</p>
+					<p>BuildLabでは、ヒアリングをもとに必要な内容を整理し、制作内容と費用を事前にご提示します。</p>
+				</div>
+
+				<div class="mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
+					<article class="border-t border-accent pt-7">
+						<p class="font-sans text-3xl font-light italic text-main">01</p>
+						<p class="mt-3 font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#9ab8b5]">Clear</p>
+						<h3 class="mt-5 text-xl font-black tracking-[0.02em] text-[#202526]">事前に、明確に。</h3>
+						<p class="mt-4 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">制作内容と費用を事前にご提示します。</p>
+					</article>
+					<article class="border-t border-accent pt-7">
+						<p class="font-sans text-3xl font-light italic text-main">02</p>
+						<p class="mt-3 font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#9ab8b5]">Flexible</p>
+						<h3 class="mt-5 text-xl font-black tracking-[0.02em] text-[#202526]">ご予算に合わせて。</h3>
+						<p class="mt-4 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">ご予算や目的に合わせて、制作範囲を調整できます。</p>
+					</article>
+					<article class="border-t border-accent pt-7">
+						<p class="font-sans text-3xl font-light italic text-main">03</p>
+						<p class="mt-3 font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#9ab8b5]">No Waste</p>
+						<h3 class="mt-5 text-xl font-black tracking-[0.02em] text-[#202526]">必要なものだけ。</h3>
+						<p class="mt-4 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">必要のない機能やページを無理に追加しません。</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-[#f7f8f7] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto w-full max-w-6xl">
+				<SectionTitle variant="approach" eyebrow="Price Plans">
+					制作料金の目安。
+				</SectionTitle>
+				<p class="mt-7 max-w-2xl text-sm font-medium leading-8 tracking-[0.035em] text-[#687174] sm:text-base">
+					以下の内容を基本として、ご要望やサイトの規模に合わせてお見積もりします。
+				</p>
+
+				<div class="mt-12">
+					{pricePlans.map((plan) => (
+						<article class="grid gap-7 border-t border-[#ccd5d5] py-9 md:grid-cols-[5rem_0.9fr_1.1fr] md:gap-8 md:py-11">
+							<p class="font-sans text-3xl font-light italic leading-none text-main md:pt-1">{plan.number}</p>
+							<div>
+								<p class="font-sans text-xs font-medium uppercase tracking-[0.16em] text-[#9ab8b5]">{plan.category}</p>
+								<h3 class="mt-3 text-xl font-black leading-snug tracking-[0.02em] text-[#202526] sm:text-2xl">{plan.title}</h3>
+								<p class="mt-5 font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-tight tracking-[-0.04em] text-[#102231]">{plan.price}</p>
+								<p class="mt-4 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">{plan.description}</p>
+								{plan.note && <p class="mt-3 text-xs font-medium leading-7 text-[#687174]">{plan.note}</p>}
+							</div>
+							<div class="md:pl-8">
+								<p class="text-xs font-bold tracking-[0.12em] text-[#687174]">含まれる内容</p>
+								<ul class="mt-4 grid gap-x-5 gap-y-2 text-sm font-medium leading-7 text-[#4d595c] sm:grid-cols-2">
+									{plan.included.map((item) => <li class="before:mr-2 before:text-main before:content-['—']">{item}</li>)}
+								</ul>
+							</div>
+						</article>
+					))}
+					<div class="border-t border-[#ccd5d5]"></div>
+				</div>
+				<p class="mt-7 text-xs font-medium leading-7 text-[#687174]">
+					※表示価格は目安です。ページ数・機能・素材の準備状況などを確認し、正式なお見積もりをご案内します。
+				</p>
+			</div>
+		</section>
+
+		<section class="px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+				<div>
+					<SectionTitle variant="approach" eyebrow="Options">
+						必要に応じて、<br />追加できます。
+					</SectionTitle>
+					<p class="mt-7 max-w-md text-sm font-medium leading-8 tracking-[0.035em] text-[#687174]">
+						基本プランに含まれない機能や設定も、必要に応じて追加できます。
+					</p>
+				</div>
+				<dl class="border-t border-[#ccd5d5]">
+					{options.map((option) => (
+						<div class="grid grid-cols-[1fr_auto] items-start gap-4 border-b border-[#ccd5d5] py-5 sm:gap-8">
+							<dt class="text-sm font-bold leading-7 tracking-[0.02em] text-[#202526] sm:text-base">{option.name}</dt>
+							<dd class="text-right text-sm font-semibold leading-7 text-[#102231] sm:text-base">{option.price}</dd>
+						</div>
+					))}
+				</dl>
+			</div>
+		</section>
+
+		<section class="bg-[#f7f8f7] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+				<div>
+					<SectionTitle variant="approach" eyebrow="Maintenance">
+						公開したあとも、<br />必要なサポートを。
+					</SectionTitle>
+					<div class="mt-7 max-w-md space-y-4 text-sm font-medium leading-8 tracking-[0.035em] text-[#687174]">
+						<p>Webサイトは公開して終わりではありません。</p>
+						<p>更新・修正・保守・改善など、公開後のWeb運用についてもサポートします。</p>
+					</div>
+				</div>
+				<div class="border-t border-[#ccd5d5] pt-7">
+					<p class="font-sans text-xs font-medium uppercase tracking-[0.16em] text-[#9ab8b5]">Website support</p>
+					<h3 class="mt-4 text-xl font-black tracking-[0.02em] text-[#202526] sm:text-2xl">Webサイト運用・保守</h3>
+					<p class="mt-5 font-sans text-[clamp(2rem,4vw,3rem)] font-semibold leading-tight tracking-[-0.04em] text-[#102231]">¥3,000〜<span class="ml-2 text-base font-medium tracking-normal text-[#687174]">/ 月</span></p>
+					<ul class="mt-8 grid gap-x-6 gap-y-3 text-sm font-medium leading-7 text-[#4d595c] sm:grid-cols-2">
+						<li>テキスト・画像更新</li>
+						<li>軽微な修正</li>
+						<li>WordPress等の保守</li>
+						<li>不具合対応</li>
+						<li>Webサイトに関する相談</li>
+						<li>必要に応じた改善提案</li>
+					</ul>
+					<p class="mt-7 border-l-2 border-main py-1 pl-4 text-xs font-medium leading-7 text-[#687174]">
+						対応範囲はWebサイトの構成やご希望に合わせて、個別にご提案します。
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto w-full max-w-6xl">
+				<SectionTitle variant="approach" eyebrow="Price Example">
+					たとえば、<br />こんなWebサイト。
+				</SectionTitle>
+				<p class="mt-7 max-w-2xl text-sm font-medium leading-8 tracking-[0.035em] text-[#687174] sm:text-base">
+					制作内容や期間を含めた事例から、ご自身のサイトづくりをイメージしてみてください。
+				</p>
+
+				<div class="mt-12 border-t border-[#ccd5d5]">
+					{examples.map((example) => (
+						<article class="grid gap-6 border-b border-[#ccd5d5] py-8 md:grid-cols-[4rem_1fr_auto] md:items-start md:gap-8 md:py-10">
+							<p class="font-sans text-2xl font-light italic text-main">{example.number}</p>
+							<div>
+								<h3 class="text-xl font-black tracking-[0.02em] text-[#202526] sm:text-2xl">{example.title}</h3>
+								<ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium leading-7 text-[#687174]">
+									{example.items.map((item) => <li>{item}</li>)}
+								</ul>
+								<p class="mt-5 text-xs font-medium tracking-[0.04em] text-[#687174]">制作期間：{example.period}</p>
+							</div>
+							<p class="font-sans text-3xl font-semibold tracking-[-0.04em] text-[#102231] md:pt-1">{example.price}</p>
+						</article>
+					))}
+				</div>
+				<p class="mt-7 text-xs font-medium leading-7 text-[#687174]">
+					掲載している料金は一例です。ページ数・機能・素材の準備状況・制作内容などによって料金は異なります。
+				</p>
+			</div>
+		</section>
+
+		<section class="bg-[#f7f8f7] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+					<div>
+						<SectionTitle variant="approach" eyebrow="Payment">
+							お支払いについて。
+						</SectionTitle>
+						<p class="mt-7 max-w-md text-sm font-medium leading-8 tracking-[0.035em] text-[#687174]">
+							お支払いは制作開始時と公開時の2回に分けてお願いしています。
+						</p>
+					</div>
+					<div>
+						<div class="grid gap-8 border-t border-[#ccd5d5] py-8 sm:grid-cols-2 sm:gap-10">
+							<div>
+								<p class="font-sans text-xs font-medium uppercase tracking-[0.16em] text-[#9ab8b5]">01 / Start</p>
+								<h3 class="mt-4 text-base font-bold text-[#202526]">制作開始時</h3>
+								<p class="mt-3 font-sans text-5xl font-semibold tracking-[-0.05em] text-main">50%</p>
+							</div>
+							<div>
+								<p class="font-sans text-xs font-medium uppercase tracking-[0.16em] text-[#9ab8b5]">02 / Launch</p>
+								<h3 class="mt-4 text-base font-bold text-[#202526]">Webサイト公開時</h3>
+								<p class="mt-3 font-sans text-5xl font-semibold tracking-[-0.05em] text-main">50%</p>
+							</div>
+						</div>
+						<p class="border-t border-[#ccd5d5] py-6 text-sm font-medium leading-8 text-[#687174]">
+							制作開始前に制作費の50%、Webサイト公開時に残りの50%をお支払いいただきます。
+						</p>
+						<p class="border-l-2 border-main py-1 pl-4 text-xs font-medium leading-7 text-[#687174]">
+							追加作業が必要な場合は、内容と費用を事前にご案内し、ご確認いただいてから進めます。
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-32">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="max-w-3xl">
+					<SectionTitle variant="approach" eyebrow="FAQ">
+						料金について、<br />よくあるご質問。
+					</SectionTitle>
+				</div>
+				<div class="mt-12 border-t border-[#ccd5d5]">
+					{faqs.map((faq) => (
+						<details class="group border-b border-[#ccd5d5]">
+							<summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left marker:content-none">
+								<span class="flex items-start gap-4 text-sm font-bold leading-7 tracking-[0.02em] text-[#202526] sm:text-base">
+									<span class="font-sans text-main">Q.</span>
+									{faq.question}
+								</span>
+								<span aria-hidden="true" class="shrink-0 font-sans text-xl font-light text-main transition-transform group-open:rotate-45">+</span>
+							</summary>
+							<p class="max-w-3xl pb-7 pl-9 text-sm font-medium leading-8 tracking-[0.025em] text-[#687174]">{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<CTA
+			eyebrow="Start a project."
+			title={'ご予算に合わせて、\n一緒に考えます。'}
+			description={'まだ具体的な制作内容が決まっていなくても大丈夫です。\nご予算や現在のお悩みを伺いながら、必要な制作内容をご提案します。'}
+			href="/contact"
+			label="制作について相談する"
+		/>
+	</main>
+
+	<Footer />
+</Layout>
